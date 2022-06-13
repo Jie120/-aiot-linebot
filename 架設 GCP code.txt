@@ -1,0 +1,14 @@
+1.sudo apt-get update; sudo apt-get install -y python3-pip unzip; sudo timedatectl set-timezone Asia/Taipei; pip3 install flask line-bot-sdk uwsgi; source .profile #(安裝python套件(pip) 見requirements.txt)
+2.sudo apt-get install nginx #(安裝nginx)
+3.sudo mv ./jie.conf /etc/nginx/sites-available/  #(將linebot.conf(設定檔)上傳後移入/etc/nginx/sites-available/)
+4.sudo ln -s /etc/nginx/sites-available/jie.conf /etc/nginx/sites-enabled/jie.conf #(建立軟連結)
+5.sudo nginx -s reload  #(重啟nginx)
+6.exit  #(退出ssh，重新開啟)
+
+
+7.sudo apt install snapd #(安裝套件)
+8.sudo apt-get update; sudo apt-get install -y nginx; sudo timedatectl set-timezone Asia/Taipei; sudo snap install core; sudo snap refresh core; sudo snap install --classic certbot; sudo ln -s /snap/bin/certbot /usr/bin/certbot 
+
+9.sudo certbot --nginx  #(創造https憑證)，(1)輸入email(2)Y(3)N
+10. uwsgi -w app:app -s :5000 -d myout.log --logto myout.log #(用port:5000在背景執行)
+11.tail -f myout.log #(可以看出app.py收到資訊後跑的過程)
